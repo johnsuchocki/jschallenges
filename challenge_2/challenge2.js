@@ -2,7 +2,7 @@ $(function(){
 	
 	var colorToggle = true;
 	
-	// 1 - works initial time only, not fully functional
+	// 1 - done
 	$("h1").on('click', function() {
 		if(colorToggle)
 			$("h1").css('color', 'red');
