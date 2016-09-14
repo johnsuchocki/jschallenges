@@ -28,8 +28,110 @@
  *   and how to use it in JS. You will also need to download a sound bite
  */
 
+ var oneShootCount = 0;
+ var oneScore = 0;
+ var twoShootCount = 0;
+ var twoScore = 0;
+ var resetCount = 0;
+ var oneShotRes = 0;
+ var twoShotRes = 0;
+ 
+
  $(function(){
 
+	$("#teamone-shoot").on('click', function(){ 
+		calcShotOne();
+		displayTeamOne();
+	})
+	
+	$("#teamtwo-shoot").on('click', function(){
+		calcShotTwo();
+		displayTeamTwo();
+	})
+	
+	$("#reset").on('click', function() {
+		reset();
+		displayTeamOne();
+		displayTeamTwo();
+		displayResetCount();
+	})
+	
+	$("#simulate100").on('click', function(){
+		for (i = 0; i < 100; i++) {
+			calcShotOne();
+			calcShotTwo();
+		}
+		displayTeamOne();
+		displayTeamTwo();
+	})
 
-
+	$("#simulate1000").on('click', function(){
+		for (i = 0; i < 1000; i++) {
+			calcShotOne();
+			calcShotTwo();
+		}
+		displayTeamOne();
+		displayTeamTwo();
+	})
+	
+	$("#simulate10000").on('click', function(){
+		for (i = 0; i < 10000; i++) {
+			calcShotOne();
+			calcShotTwo();
+		}
+		displayTeamOne();
+		displayTeamTwo();
+	})
+	
+	$("#simulateTons").on('click', function() {
+		for (i = 0; i < 100000000; i++) {
+			calcShotOne();
+			calcShotTwo();
+		}
+		displayTeamOne();
+		displayTeamTwo();
+	})
  })
+ 
+ function calcShotOne() {
+	 oneShotRes = Math.random();
+		if (oneShotRes > .85) {
+			oneShootCount++;
+			oneScore++;
+		} else {
+			oneShootCount++;
+		}
+ }
+ 
+ function calcShotTwo() {
+	 twoShotRes = Math.random()
+		if (twoShotRes > .92) {
+			twoShootCount++;
+			twoScore++;
+		} else {
+			twoShootCount++;
+		}
+ }
+ 
+ function displayTeamOne() {
+	 $("#teamone-numshots").text(oneShootCount);
+	$("#teamone-numhits").text(oneScore);
+ }
+ 
+ function displayTeamTwo() {
+	 $("#teamtwo-numshots").text(twoShootCount);
+	$("#teamtwo-numhits").text(twoScore);
+ }
+ 
+ function reset() {
+	 resetCount++;
+	 oneShootCount = 0;
+	 oneScore = 0;
+	 twoShootCount = 0;
+	 twoScore = 0;
+ }
+ 
+ function displayResetCount() {
+	 $("#num-resets").text(resetCount);
+ }
+ 
